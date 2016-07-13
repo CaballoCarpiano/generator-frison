@@ -1,0 +1,29 @@
+{
+  "name": "generator-frison",
+  "version": "1.0.0",
+  "description": "Yeoman Generator with Laravel, foundation and Grunt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaballoCarpiano/generator-frison.git"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "laravel",
+    "foundation",
+    "grunt",
+    "bower"
+  ],
+  "author": "CaballoCarpiano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CaballoCarpiano/generator-frison/issues"
+  },
+  "homepage": "https://github.com/CaballoCarpiano/generator-frison#readme",
+  "dependencies": {
+    "yeoman-generator": "^0.23.4"
+  }
+}
