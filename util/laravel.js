@@ -89,24 +89,19 @@ function createDBifNotExists(callback) {
     return ee;
 };
 
-function getComposer()
-{
+function getComposer() {
     var ee = new EventEmitter();
     var child;
 
     child = exec('curl -sS https://getcomposer.org/installer | php',
         function (error, stdout, stderr) {
-            if(stdout!==null)
-            {
+            if(stdout!==null) {
                 //console.log('stdout: ' + stdout);
                 ee.emit('done',stdout);
-            }
-            else
-            {
+            } else {
                // console.log('stderr: ' + stderr);
                 ee.emit('error',stderr);
-            }
-            if (error !== null) {
+            } if (error !== null) {
                   ee.emit('error',error);
                 //console.log('exec error: ' + error);
             }
@@ -114,8 +109,7 @@ function getComposer()
     return ee;
 }
 
-function checkInDefaultPath()
-{
+function checkInDefaultPath() {
   var file = "/usr/local/bin/composer";
   var ee = new EventEmitter();
   fs.exists(file, function(exists) {
@@ -129,8 +123,7 @@ function checkInDefaultPath()
   
 }
 
-function checkComposer(file)
-{
+function checkComposer(file) {
   var ee = new EventEmitter();
   fs.exists(file, function(exists) {
      if (exists) {
@@ -143,15 +136,11 @@ function checkComposer(file)
 }
 
 
-function installComposer()
-{
+function installComposer() {
          var ee = EventEmitter();
          getComposer();
         return ee;
 }
-
-
-
 
 module.exports = {
     repo : laravelRepo,

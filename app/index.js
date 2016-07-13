@@ -12,8 +12,8 @@ var util         = require('util'),
     exec         = require('child_process').exec,
     prompts      = require('./prompts');
 
-
-var GenlaravelGenerator = module.exports = function GenlaravelGenerator(args, options, config) {
+//module.exports = generators.Base.extend({
+var FrisonGenerator = module.exports = function FrisonGenerator(args, options, config) {
 
     yeoman.generators.Base.apply(this, arguments);
     if (typeof options.advanced !== 'undefined' && options.advanced) {
@@ -46,9 +46,9 @@ var GenlaravelGenerator = module.exports = function GenlaravelGenerator(args, op
         this.secretKey = this.makeSecretKey();
 };
 
-util.inherits(GenlaravelGenerator, yeoman.generators.Base);
+util.inherits(FrisonGenerator, yeoman.generators.Base);
 
-GenlaravelGenerator.prototype.AskUser = function() {
+FrisonGenerator.prototype.AskUser = function() {
 
     // Display gen laravel ascii art
     console.log(art.lar);
@@ -58,7 +58,7 @@ GenlaravelGenerator.prototype.AskUser = function() {
 
 };
 //saving the database details into dbconfig.php
-GenlaravelGenerator.prototype.gitIgnore = function() {
+FrisonGenerator.prototype.gitIgnore = function() {
 
    this.copy('dbconfig.php.tmpl', 'dbconfig.php');
 	
@@ -66,7 +66,7 @@ GenlaravelGenerator.prototype.gitIgnore = function() {
 };
 
 //saving the application configuration into app.php
-GenlaravelGenerator.prototype.gitIgnore = function() {
+FrisonGenerator.prototype.gitIgnore = function() {
 
    this.copy('app.php.tmpl', 'app.php');
 	
@@ -74,7 +74,7 @@ GenlaravelGenerator.prototype.gitIgnore = function() {
 };
 
 //gitignore configure
-GenlaravelGenerator.prototype.gitIgnore = function() {
+FrisonGenerator.prototype.gitIgnore = function() {
 
 	if (this.userInput.useGit) {
 		this.copy('gitignore.tmpl', '.gitignore');
@@ -82,7 +82,7 @@ GenlaravelGenerator.prototype.gitIgnore = function() {
 
 };
 //setup vagrant
-GenlaravelGenerator.prototype.setVagrant = function() {
+FrisonGenerator.prototype.setVagrant = function() {
 
 	if (this.userInput.enableVagrant) {
 		console.log('Setting Up Vagrant'.green);
@@ -92,20 +92,20 @@ GenlaravelGenerator.prototype.setVagrant = function() {
 
 };
 //check if the database already exists otherwise create it
-GenlaravelGenerator.prototype.createDataBase = function() {
+FrisonGenerator.prototype.createDataBase = function() {
 
 	var done = this.async();
 
          laravel.createDBifNotExists(done).on('error', function(err) {
-		console.log('Database does not exist, or crendetials are wrong!'.red);
-		console.log('Make sure you create the database and update the credentials in the /app/database.php');
-		done();
-	});
+    		console.log('Database does not exist, or crendetials are wrong!'.red);
+    		console.log('Make sure you create the database and update the credentials in the /app/database.php');
+    		done();
+    	});
 
 };
 
 //in order to get the laravel from git repo
-GenlaravelGenerator.prototype.checkoutLaravel = function() {
+FrisonGenerator.prototype.checkoutLaravel = function() {
 
     var done = this.async(),
         me   = this;
@@ -123,7 +123,6 @@ GenlaravelGenerator.prototype.checkoutLaravel = function() {
 
     } else {
 
-        //console.log("test".cyan);
         this.remote('laravel', 'laravel', function(err, remote) {
             remote.directory('.', me.userInput.larDir);
             done();
@@ -133,7 +132,7 @@ GenlaravelGenerator.prototype.checkoutLaravel = function() {
 
 };
 //using composer to install dependencies
-GenlaravelGenerator.prototype.installComposer = function(){
+FrisonGenerator.prototype.installComposer = function(){
     var done = this.async(),
         child,
         me = this;
@@ -144,38 +143,36 @@ GenlaravelGenerator.prototype.installComposer = function(){
     
          
         laravel.getComposer().on('done',function(){
-        var composer    = spawn('php', ['composer.phar','install']);
+            var composer    = spawn('php', ['composer.phar','install']);
 
-        composer.stdout.on('data', function (data) {
-            console.log('stdout: ' + data);
-            done();
-        });
-        composer.stderr.on('data', function (data) {
-            console.log('stderr: ' + data);
-        });
+            composer.stdout.on('data', function (data) {
+                console.log('stdout: ' + data);
+                done();
+            });
+            composer.stderr.on('data', function (data) {
+                console.log('stderr: ' + data);
+            });
 
 
-        composer.on('close', function (code) {
-            console.log('child process exited with code ' + code);
-        });
+            composer.on('close', function (code) {
+                console.log('child process exited with code ' + code);
+            });
 
-        })
-        .on('error',function(){
+        }).on('error',function(){
            console.log("Unable to find cURL on System");
         });
 
   
  }
 
-GenlaravelGenerator.prototype.configDB = function(){
+FrisonGenerator.prototype.configDB = function(){
      var done = this.async();
      console.log("copying the config file");
      this.copy('database.php.tmpl','app/config/database.php');
-     //startServer(this);
      done();
 };
 
-GenlaravelGenerator.prototype.makeSecretKey = function(){
+FrisonGenerator.prototype.makeSecretKey = function(){
      this.copy('app.php.tmpl','app/config/app.php');
      //var done = this.async();
      var mask = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~`!@#$%^&*()_+-={}[]:";<>?,./|\\';
@@ -189,7 +186,7 @@ GenlaravelGenerator.prototype.makeSecretKey = function(){
 
 
 
-GenlaravelGenerator.prototype.initialiseGit = function() {
+FrisonGenerator.prototype.initialiseGit = function() {
 
     // Intiate Git
     if (this.userInput.useGit) {
@@ -206,7 +203,7 @@ GenlaravelGenerator.prototype.initialiseGit = function() {
 };
 
 /*
-GenlaravelGenerator.prototype.checkComposer = function checkComposer() {
+FrisonGenerator.prototype.checkComposer = function checkComposer() {
     var done = this.async();
     laravel.defaultComposer().on('done',function(){
        console.log("Composer found in Default path");
@@ -219,7 +216,7 @@ GenlaravelGenerator.prototype.checkComposer = function checkComposer() {
 };
 
 
-GenlaravelGenerator.prototype.checkComposer = function checkComposer() {
+FrisonGenerator.prototype.checkComposer = function checkComposer() {
     var cb = this.async();
 
     this.info('Check composer install'.cyan);
@@ -240,7 +237,7 @@ GenlaravelGenerator.prototype.checkComposer = function checkComposer() {
 };
 */
 
-GenlaravelGenerator.prototype.allDone = function() {
+FrisonGenerator.prototype.allDone = function() {
     console.log('All Done!!'.green);
 
 };
@@ -254,8 +251,7 @@ function getInput(done) {
     });
 };
 
-function startSrever()
-{
+function startSrever(){
     console.log("Staring Server");
     var child = exec("php artisan serve",function(error,stdout,stderr){
         if(stdout!==null)
@@ -265,44 +261,36 @@ function startSrever()
     });
 }
 
-function startServer(me)
-{
+function startServer(me) {
 
-
-             var input = {};
-     prompt([prompts.startServer],input,function(me)
-        {
-            console.log(me);
-        });
-    if(me.startServer)
-    {
-       this.info('trying to start server'.cyan);
-       var artisan = spawn('php', ['artisan','serve']);
-       var me = this; 
+    var input = {};
+    prompt([prompts.startServer],input,function(me) {
+        console.log(me);
+    });
+    if(me.startServer) {
+        this.info('trying to start server'.cyan);
+        var artisan = spawn('php', ['artisan','serve']);
+        var me = this; 
         artisan.stdout.on('data', function (data) {
-        console.log('stdout: ' + data);
-
-       
-        //me.copy('database.php.tmpl','app/config/database.php');
-       
+            console.log('stdout: ' + data);
+            //me.copy('database.php.tmpl','app/config/database.php');
        });
 
         artisan.stderr.on('data', function (data) {
-        console.log('stderr: ' + data);
-       });
+            console.log('stderr: ' + data);
+        });
 
-       artisan.on('close', function (code) {
-        console.log('child process exited with code ' + code);
-       });
+        artisan.on('close', function (code) {
+            console.log('child process exited with code ' + code);
+        });
     }
 
     return false;
 
-
 }
 
 /*
-GenlaravelGenerator.prototype.startServer = function(){
+FrisonGenerator.prototype.startServer = function(){
     var cb = this.async();
              var input = {};
      prompt([prompts.startServer],input,function(me)
