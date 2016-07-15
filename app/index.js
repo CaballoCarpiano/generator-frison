@@ -1,51 +1,34 @@
 'use strict';
 var fs           = require('fs'),
     path         = require('path'),
+    chalk        = require('chalk'),
     yeoman       = require('yeoman-generator'),
-    wrench       = require('wrench'),
-    git          = require('../util/git'),
-    laravel    = require('../util/laravel'),
-    spawn        = require('../util/spawn'),
-    art          = require('../util/art'),
+    git          = require('./util/git'),
+    laravel      = require('./util/laravel'),
+    spawn        = require('./util/spawn'),
+    art          = require('./util/art'),
     exec         = require('child_process').exec,
     prompts      = require('./prompts');
 
 module.exports = yeoman.Base.extend({
-    var me = this;
 //var FrisonGenerator = module.exports = function FrisonGenerator(args, options, config) {
     constructor: function() {
         //Super constructor
         yeoman.Base.apply(this, arguments);
 
+    },
+
+    initializing: function() {
         this.composer = false;
-
-        this.secretKey = this.makeSecretKey();
+        // this.secretKey = this._makeSecretKey();
     },
 
-    AskUser: function() {
-
+    prompting: function() {
         // Display gen laravel ascii art
-        me.log(art.lar);
-
-        // Get the input  from the user
-        getInput.call(this, this.async());
-
+        this.log(art.logo);
+        this._prompGeneral();
     },
-    
-    //saving the database details into dbconfig.php
-    gitIgnore: function() {
-
-       this.copy('dbconfig.php.tmpl', 'dbconfig.php');
-        
-    },
-
-    //saving the application configuration into app.php
-    gitIgnore: function() {
-
-       this.copy('app.php.tmpl', 'app.php');
-        
-    },
-
+/*
     //gitignore configure
     gitIgnore: function() {
 
@@ -61,8 +44,8 @@ module.exports = yeoman.Base.extend({
         var done = this.async();
 
              laravel.createDBifNotExists(done).on('error', function(err) {
-                console.log('Database does not exist, or crendetials are wrong!'.red);
-                console.log('Make sure you create the database and update the credentials in the /app/database.php');
+                this.log('Database does not exist, or crendetials are wrong!'.red);
+                this.log('Make sure you create the database and update the credentials in the /app/database.php');
                 done();
             });
 
@@ -78,8 +61,8 @@ module.exports = yeoman.Base.extend({
 
             git.submoduleAdd(laravel.repo, this.userInput.larDir, function() {
                 var cwd = process.cwd();
-                process.chdir(me.userInput.larDir);
-                git.checkout([me.userInput.larVer], function() {
+                process.chdir(this.userInput.larDir);
+                git.checkout([this.userInput.larVer], function() {
                     process.chdir(cwd);
                     done();
                 });
@@ -88,7 +71,7 @@ module.exports = yeoman.Base.extend({
         } else {
 
             this.remote('laravel', 'laravel', function(err, remote) {
-                remote.directory('.', me.userInput.larDir);
+                remote.directory('.', this.userInput.larDir);
                 done();
             });
 
@@ -100,9 +83,9 @@ module.exports = yeoman.Base.extend({
         var done = this.async(),
             child,
             me = this;
-        console.log("Started Downloading composer");
+        this.log("Started Downloading composer");
         var cwd = process.cwd();
-        process.chdir(me.userInput.larDir);
+        process.chdir(this.userInput.larDir);
       
         
              
@@ -110,20 +93,20 @@ module.exports = yeoman.Base.extend({
                 var composer    = spawn('php', ['composer.phar','install']);
 
                 composer.stdout.on('data', function (data) {
-                    console.log('stdout: ' + data);
+                    this.log('stdout: ' + data);
                     done();
                 });
                 composer.stderr.on('data', function (data) {
-                    console.log('stderr: ' + data);
+                    this.log('stderr: ' + data);
                 });
 
 
                 composer.on('close', function (code) {
-                    console.log('child process exited with code ' + code);
+                    this.log('child process exited with code ' + code);
                 });
 
             }).on('error',function(){
-               console.log("Unable to find cURL on System");
+               this.log("Unable to find cURL on System");
             });
 
       
@@ -131,13 +114,12 @@ module.exports = yeoman.Base.extend({
 
      configDB: function(){
           var done = this.async();
-          console.log("copying the config file");
+          this.log("copying the config file");
           this.copy('database.php.tmpl','app/config/database.php');
           done();
      },
 
-     makeSecretKey: function(){
-          this.copy('app.php.tmpl','app/config/app.php');
+     _makeSecretKey: function(){
           //var done = this.async();
           var mask = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~`!@#$%^&*()_+-={}[]:";<>?,./|\\';
           var result = '';
@@ -162,19 +144,76 @@ module.exports = yeoman.Base.extend({
              });
          }
 
+     },
+
+     allDone: function() {
+         this.log('All Done!!'.green);
+     },*/
+
+     _prompGeneral: function() {
+        var me = this;
+        return this.prompt(prompts.general).then(me._prompDatabase.bind(me));
+     },
+
+    _prompDatabase: function(answers) {
+        var me = this;
+        me.answers = {general: answers};
+        if (answers.dbChoice!="no")
+            return this.prompt(prompts.dbConfig).then(function (answers) {
+                me.answers.dbConfig = answers;
+                me._prompConfirm.call(me);
+            });
+        else{
+            me._prompConfirm.call(me);
+        }
+     },
+
+
+     _prompConfirm: function(answers) {
+         var me = this;
+
+         me.log(chalk.red('\n----------------------------'));
+
+         me._logConfirmation('production URL', me.answers.general.url);
+         me._logConfirmation('Create repo', me.answers.general.useGit ? "Yes" : "No");
+         me._logConfirmation('Database', me.answers.general.dbChoice);
+         if (me.answers.general.dbChoice!="no"){
+             me._logConfirmation('Database host', me.answers.dbConfig.dbHost);
+             me._logConfirmation('Database name', me.answers.dbConfig.dbName);
+             me._logConfirmation('Database user', me.answers.dbConfig.dbUser);
+             me._logConfirmation('Database password', me.answers.dbConfig.dbPass);
+         }
+
+         me.log(chalk.red('----------------------------'));
+
+
+        return this.prompt({
+            type    : 'confirm',
+            name    : 'okAll',
+            message : 'Is this Correct?'
+        }).then(function (inp) {
+            if (!inp.okAll){
+              me._prompGeneral();
+            }
+        });
+
+     },
+
+     _logConfirmation: function(msg, val) {
+         this.log(chalk.bold.gray(msg + ': ') + chalk.cyan(val));
      }
 
-};
+});
 
 /*
 FrisonGenerator.prototype.checkComposer = function checkComposer() {
     var done = this.async();
     laravel.defaultComposer().on('done',function(){
-       console.log("Composer found in Default path");
+       this.log("Composer found in Default path");
        done();
     });
     laravel.defaultComposer().on('error',function(){
-       console.log("composer not found in default path");
+       this.log("composer not found in default path");
     });
     
 };
@@ -201,25 +240,12 @@ FrisonGenerator.prototype.checkComposer = function checkComposer() {
 };
 */
 
-FrisonGenerator.prototype.allDone = function() {
-    console.log('All Done!!'.green);
-};
-
-
-function getInput(done) {
-    var me = this;
-    promptForData.call(me, function(input) {
-        me.userInput = input;
-        confirmInput.call(me, done);
-    });
-};
-
 function startSrever(){
-    console.log("Staring Server");
+    this.log("Staring Server");
     var child = exec("php artisan serve",function(error,stdout,stderr){
         if(stdout!==null)
         {
-            console.log("stdout :"+stdout);
+            this.log("stdout :"+stdout);
         }
     });
 }
@@ -228,92 +254,26 @@ function startServer(me) {
 
     var input = {};
     prompt([prompts.startServer],input,function(me) {
-        console.log(me);
+        this.log(me);
     });
-    if(me.startServer) {
+    if(this.startServer) {
         this.info('trying to start server'.cyan);
         var artisan = spawn('php', ['artisan','serve']);
         var me = this; 
         artisan.stdout.on('data', function (data) {
-            console.log('stdout: ' + data);
-            //me.copy('database.php.tmpl','app/config/database.php');
+            this.log('stdout: ' + data);
+            //this.copy('database.php.tmpl','app/config/database.php');
        });
 
         artisan.stderr.on('data', function (data) {
-            console.log('stderr: ' + data);
+            this.log('stderr: ' + data);
         });
 
         artisan.on('close', function (code) {
-            console.log('child process exited with code ' + code);
+            this.log('child process exited with code ' + code);
         });
     }
 
     return false;
 
-}
-
-var promptForData = function(done) {
-
-    // All the data will be attached to this object
-    var input = {},
-        me = this;
-    input.larVer = '4';
-    input.larDir = "laravel";
-
-    prompt([
-        prompts.url,
-        prompts.secretKey,
-        prompts.dbHost,
-        prompts.dbName,
-        prompts.dbUser,
-        prompts.dbPass,
-        prompts.larVer,
-        prompts.useGit,
-        prompts.larDir,
-        prompts.enableVagrant
-    ], input, function(i) {
-        var port = i.url.match(/:[\d]+$/);
-        if (port !== null) {
-            input.port = port[0];
-        } else {
-            input.port = '';
-        }
-        done(input);
-    });
-}
-
-
-
-
-function confirmInput(done) {
-
-    var me  = this;
-
-    console.log('\n----------------------------'.red);
-
-    logConfirmation('Laravel URL', this.userInput.url);
-    logConfirmation('Secret key', this.secretKey);
-    logConfirmation('Database host', this.userInput.dbHost);
-    logConfirmation('Database name', this.userInput.dbName);
-    logConfirmation('Database user', this.userInput.dbUser);
-    logConfirmation('Database password', this.userInput.dbPass);
-    logConfirmation('Laravel version', this.userInput.larVer);
-    logConfirmation('Laravel install directory', this.userInput.larDir);
-
-    console.log('----------------------------'.red);
-
-    prompt([prompts.correct], null, function(input) {
-        if (!input.correct) {
-            console.log(art.oops);
-            getInput.call(me, done);
-        } else {
-            console.log(art.go);
-            done();
-        }
-    });
-
-};
-
-function logConfirmation(msg, val) {
-    console.log(msg.bold.grey + ': '.bold.grey + val+"".cyan);
 }
