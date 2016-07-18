@@ -53,7 +53,11 @@ module.exports = yeoman.Base.extend({
 
      _prompGeneral: function() {
         var me = this;
-        return this.prompt(prompts.general).then(me._prompConfirm.bind(me)); //_prompDatabase
+        return this.prompt(prompts.general).then(function(answers) {
+                me.answers = {general: answers};
+                me._prompConfirm.call(me);
+             // me._prompDatabase.bind(me)   
+            });
      },
 
     _prompDatabase: function(answers) {
