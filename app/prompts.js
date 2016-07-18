@@ -12,7 +12,7 @@ module.exports = {
                 }
                 return value;
             }
-        },
+        }/*,
         {
             type    : 'confirm',
             name    : 'useGit',
@@ -27,7 +27,7 @@ module.exports = {
                 {name: 'Create database', value: 'create'},
                 {name: 'Connect to database', value: 'connect'}
             ]
-        }
+        }*/
     ],
     dbConfig: [
         {

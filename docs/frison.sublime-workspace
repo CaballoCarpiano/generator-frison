@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"compo",
+				"composerExists"
+			],
+			[
+				"DB",
+				"dbConfig"
+			],
+			[
+				"_",
+				"_prompConfig"
+			],
+			[
 				"f",
 				"f	Anonymous Function"
 			],
@@ -502,23 +514,35 @@
 			[
 				"s",
 				"scrollSpeed"
-			],
-			[
-				"trans",
-				"transform"
-			],
-			[
-				"bac",
-				"background-image"
-			],
-			[
-				"inlin",
-				"inline-block"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "/D/workspace/web/htdocs/proyectos/generator-frison/app/index.js",
+			"settings":
+			{
+				"buffer_size": 8698,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/workspace/web/htdocs/proyectos/generator-frison/app/util/laravel.js",
+			"settings":
+			{
+				"buffer_size": 3959,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/workspace/web/htdocs/proyectos/generator-frison/app/prompts.js",
+			"settings":
+			{
+				"buffer_size": 1668,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -527,10 +551,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "packa",
+		"height": 219.0,
+		"last_filter": "javas",
 		"selected_items":
 		[
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
 			[
 				"packa",
 				"Package Control: Install Package"
@@ -616,7 +644,7 @@
 				"Indentation: Reindent Lines"
 			]
 		],
-		"width": 396.0
+		"width": 464.0
 	},
 	"console":
 	{
@@ -642,6 +670,19 @@
 	],
 	"file_history":
 	[
+		"/D/workspace/web/htdocs/proyectos/generator-frison/app/util/art.js",
+		"/D/workspace/web/htdocs/proyectos/generator-frison/app/templates/database.php",
+		"/D/workspace/web/htdocs/proyectos/generator-frison/util/laravel.js",
+		"/D/workspace/web/htdocs/proyectos/generator-frison/package.json",
+		"/D/workspace/web/htdocs/proyectos/generator-frison/util/art.js",
+		"/D/workspace/web/htdocs/proyectos/test/laravel/.gitignore",
+		"/D/workspace/web/htdocs/proyectos/test/.gitignore",
+		"/D/workspace/web/htdocs/proyectos/test/app/config/app.php",
+		"/D/workspace/web/htdocs/proyectos/generator-frison/util/spawn.js",
+		"/D/workspace/web/htdocs/proyectos/generator-frison/util/git.js",
+		"/D/workspace/web/htdocs/proyectos/generator-frison/app/prompts.js",
+		"/D/workspace/web/htdocs/proyectos/generator-frison/util/prompt.js",
+		"/C/Users/Ivan/Desktop/generator-genlaravel-master/package.json",
 		"/C/Users/Ivan/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/D/workspace/web/htdocs/proyectos/vidas/public/test/laravel/config/app.php",
 		"/D/workspace/web/htdocs/proyectos/vidas/public/test/laravel/app/config/app.php",
@@ -756,20 +797,7 @@
 		"/C/cygwin64/home/Ivan/enigma/enigma.py",
 		"/C/Users/Ivan/Downloads/john-doe.vcf",
 		"/D/workspace/mapex/devel/css/slides.css",
-		"/D/workspace/mapex/devel/js/introvideo.js",
-		"/C/Users/Ivan/AppData/Local/Temp/fz3temp-1/index_.php",
-		"/C/Users/Ivan/AppData/Local/Temp/fz3temp-1/index-old.php",
-		"/D/workspace/mapex/devel/views/personas.html",
-		"/D/workspace/mapex/devel/presentation.json",
-		"/C/Users/Ivan/AppData/Local/Temp/fz3temp-1/index.php",
-		"/C/Users/Ivan/Desktop/iCloud (145 Contacts).vcf",
-		"/C/Users/Ivan/AppData/Local/Temp/fz3temp-1/footer.html",
-		"/D/workspace/mapex/mapex-macos.command",
-		"/D/workspace/mapex/devel/css/main.css",
-		"/C/Users/Ivan/AppData/Local/Temp/fz3temp-1/header.html",
-		"/D/workspace/mapex/devel/js/mapex.js",
-		"/C/cygwin64/home/Ivan/enigma/imageUpdate.py",
-		"/D/workspace/mapex/devel/js/main.js"
+		"/D/workspace/mapex/devel/js/introvideo.js"
 	],
 	"find":
 	{
@@ -788,6 +816,66 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"this",
+			"answers.",
+			"answers",
+			"dbConfig",
+			"answers.database",
+			"answers",
+			"this",
+			"this.",
+			"dbChoise",
+			"No",
+			"asnwers",
+			"_confirmInput",
+			"_prompConfig",
+			"Create",
+			".",
+			",",
+			"this",
+			"chalk",
+			"util/",
+			"../util",
+			"this",
+			"this.answers",
+			"userInput",
+			"this",
+			"_confirmInput",
+			"_makeSecretKey",
+			"me.",
+			"wrench",
+			"promptForData",
+			"initialiseGit",
+			"laravelRepo",
+			"submodule",
+			"app/config",
+			"mysql",
+			"getDbCredentials",
+			"loadConfig",
+			"getDbCredentials",
+			"logConfirmation",
+			"console",
+			"console.log",
+			"console.log(me);\n    });\n    if(me.startServer) {\n        this.info('trying to start server'.cyan);\n        var artisan = spawn('php', ['artisan','serve']);\n        var me = this; \n        artisan.stdout.on('data', function (data) {\n            console.log('stdout: ' + data);\n            //me.copy('database.php.tmpl','app/config/database.php');\n       });\n\n        artisan.stderr.on('data', function (data) {\n            console.log('stderr: ' + data);\n        });\n\n        artisan.on('close', function (code) {\n            console.log('child process exited with code ' + code);\n        });\n    }\n\n    return false;",
+			"console.log",
+			"_prompConfig",
+			"this",
+			"confirmInput",
+			"dbHost",
+			"this",
+			"getInput",
+			"= function()",
+			"gitIgnore",
+			"conflict",
+			"logging",
+			"options",
+			"util",
+			"userInput",
+			"getInput",
+			"prompt",
+			"getInput",
+			"makeSecretKey",
+			"GenlaravelGenerator",
 			"laravel/",
 			"canvas",
 			"watch",
@@ -855,67 +943,7 @@
 			"scale:1})]",
 			"TweenMax.to(",
 			"autoAlpha",
-			"autoAlpha:1",
-			"label]",
-			"100",
-			"feeli",
-			"gru",
-			"Dory",
-			"dory",
-			"maketime",
-			"video",
-			"resumen",
-			"\");\n",
-			"$mainAudio.find(\"source\")",
-			"bgSrc",
-			"console",
-			"conso",
-			"runSlide",
-			"slide",
-			"initSlide",
-			"changeSlide",
-			"runSlide",
-			"bgAudio",
-			"console.",
-			"changeAudio",
-			"\n        ",
-			"_d",
-			"_D",
-			"_3",
-			"_2",
-			"_b",
-			"data-video",
-			"Tony10Content2",
-			"TonyTitleSlide",
-			"Tony10Content2",
-			"TonyTitleSlide",
-			"Tony10Content2",
-			"Content",
-			"console.",
-			"tweeningTo",
-			"tweeningTo:",
-			"videosBackground",
-			"#blackScreen",
-			"bg-vi",
-			"bg-v",
-			"[0];",
-			".play();",
-			"$(\"#videosBackground video\").each(function(i, elem) {\n        //     elem.pause();\n        //     // elem.currentTime = 0;\n        // });",
-			"#video",
-			"TweenMax",
-			"title-animation",
-			"$(div)",
-			"title-animation",
-			"cómo vi",
-			"como viv",
-			"checkAudio",
-			"console",
-			"lastLabel()+",
-			"changeV",
-			"var vid = ",
-			"TweenMax",
-			"checkVideo",
-			"TweenMax"
+			"autoAlpha:1"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -934,8 +962,383 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/D/workspace/web/htdocs/proyectos/generator-frison/app/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8698,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1457,
+								1457
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1830,
+										1831
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1009,
+										1010
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".js",
+								"current_syntax": "JavaScript/JavaScript",
+								"enabled": false,
+								"last_updated": 1468604615.01
+							},
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai JSON+.tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 456.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/workspace/web/htdocs/proyectos/generator-frison/app/util/laravel.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3959,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3101,
+								3107
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".js",
+								"current_syntax": "Unity3D/UnityJavaScript",
+								"enabled": false,
+								"last_updated": 1468604615.01
+							},
+							"syntax": "Packages/Unity3D/UnityJavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1816.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/workspace/web/htdocs/proyectos/generator-frison/app/prompts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1668,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								939,
+								947
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1666,
+										1667
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										17,
+										18
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"color_helper.file_palette":
+							[
+							],
+							"color_helper.scan":
+							{
+								"current_ext": ".js",
+								"current_syntax": "Unity3D/UnityJavaScript",
+								"enabled": false,
+								"last_updated": 1468359571.4
+							},
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai JSON+.tmTheme",
+							"syntax": "Packages/Unity3D/UnityJavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 114.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -988,16 +1391,56 @@
 		"selected_items":
 		[
 			[
+				"lara",
+				"app\\util\\laravel.js"
+			],
+			[
+				"art",
+				"app\\util\\art.js"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"p",
+				"package.json"
+			],
+			[
+				"promt",
+				"app\\prompts.js"
+			],
+			[
+				"spa",
+				"util\\spawn.js"
+			],
+			[
+				"git",
+				"util\\git.js"
+			],
+			[
+				"larave",
+				"util\\laravel.js"
+			],
+			[
+				"promp",
+				"util\\prompt.js"
+			],
+			[
+				"package",
+				"package.json"
+			],
+			[
+				"index",
+				"app\\index.js"
+			],
+			[
 				"main",
 				"public\\js\\main.min.js"
 			],
 			[
 				"vendor",
 				"public\\js\\vendor.min.js"
-			],
-			[
-				"pack",
-				"package.json"
 			],
 			[
 				"bowe",
@@ -1130,10 +1573,6 @@
 			[
 				"person",
 				"devel\\views\\personas.html"
-			],
-			[
-				"index",
-				"devel\\index.html"
 			],
 			[
 				"prese",
@@ -1462,42 +1901,6 @@
 			[
 				"init.",
 				"app\\assets\\javascripts\\ckeditor\\init.js"
-			],
-			[
-				"init",
-				"config\\initializers\\ckeditor.rb"
-			],
-			[
-				"app",
-				"config\\application.rb"
-			],
-			[
-				"layouts",
-				"app\\views\\layouts\\admin.html.erb"
-			],
-			[
-				"layot",
-				"app\\views\\layouts\\backend.html.erb"
-			],
-			[
-				"ckedi",
-				"app\\assets\\javascripts\\ckeditor\\ckeditor.js"
-			],
-			[
-				"_form",
-				"app\\views\\noticia\\_form.html.erb"
-			],
-			[
-				"atta",
-				"app\\models\\ckeditor\\attachment_file.rb"
-			],
-			[
-				"de",
-				"config\\environments\\development.rb"
-			],
-			[
-				"models/ck",
-				"app\\models\\ckeditor\\attachment_file.rb"
 			]
 		],
 		"width": 0.0
